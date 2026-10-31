@@ -1,12 +1,11 @@
-
-
-
-
+import { BannerPage } from "@/components/HomePage/Banner";
+import { CategorySection } from "@/components/HomePage/CategorySection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <h1>Home Page</h1>
+    <div className="flex flex-col gap-12">
+      <BannerPage />
+      <CategorySection />
     </div>
   );
 }
