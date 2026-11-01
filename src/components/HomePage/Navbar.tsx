@@ -15,7 +15,7 @@ import ThemeToggle from "@/app/theme-toggle";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/studios", label: "Studios" },
-  { href: "/about", label: "About Us" },
+  { href: "/#about", label: "About Us" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -24,16 +24,38 @@ const accountLinks = [
   { label: "Sign Up", href: "/sign-up" },
 ];
 
-export function Navbar() {
+
+
+
+export default function Navbar() {
   const pathname = usePathname();
   // responsive icon
   const [isMenuOpen, setIsMenuOpen] = useState(false);
- 
+
   // user info
   const { data: session } = authClient.useSession();
   const user = session?.user;
   const handleSignOut = () => {
     authClient.signOut();
+  };
+
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    setIsMenuOpen(false);
+
+    // Only intercept hash links
+    if (!href.startsWith("/#")) return;
+
+    const id = href.slice(2); // "/#about" -> "about"
+
+    // If we're already on the target page, smooth-scroll instead of routing
+    if (pathname === "/") {
+      e.preventDefault();
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      window.history.replaceState(null, "", href);
+    }
   };
 
   return (
@@ -58,8 +80,8 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-                className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href
+              onClick={(e) => handleNavClick(e, link.href)}   // 👈 add this
+              className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href
                   ? "bg-amber-100 text-amber-500 dark:bg-amber-950 dark:text-amber-400"
                   : "text-gray-900 dark:text-gray-100"
                 }`}
@@ -189,9 +211,9 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                    className={`rounded-2xl p-2 whitespace-nowrap text-[15px] transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href || pathname.startsWith(`${link.href}/`)
-                      ? "bg-amber-100 text-amber-500 dark:bg-amber-950 dark:text-amber-400"
-                      : "text-gray-900 dark:text-gray-100"
+                  className={`rounded-2xl p-2 whitespace-nowrap text-[15px] transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href || pathname.startsWith(`${link.href}/`)
+                    ? "bg-amber-100 text-amber-500 dark:bg-amber-950 dark:text-amber-400"
+                    : "text-gray-900 dark:text-gray-100"
                     }`}
                 >
                   {link.label}

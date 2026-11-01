@@ -17,8 +17,8 @@ import {
 
 const categories = [
   "Photo Studio",
-  "Sound Stage",
-  "Podcast Room",
+  "Film Stage",
+  "Podcast Lounge",
   "Music Suite",
   "Art Workshop",
 ];
@@ -76,7 +76,7 @@ const AddStudioPage = () => {
     try {
       // const token = await getTokenFromClient();
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/add-studio`,
+        `${process.env.NEXT_PUBLIC_API_URL}/studio`,
         {
           method: "POST",
           headers: {
