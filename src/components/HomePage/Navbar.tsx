@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -14,9 +14,9 @@ import ThemeToggle from "@/app/theme-toggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/studios", label: "Studios" },
-  { href: "/#about", label: "About Us" },
-  { href: "/contact", label: "Contact" },
+  { href: "/studios", label: "All Studios" },
+  { href: "/#howItWorks", label: "How It Works" },
+  { href: "/#aboutUs", label: "About Us" },
 ];
 
 const accountLinks = [
@@ -31,6 +31,17 @@ export default function Navbar() {
   const pathname = usePathname();
   // responsive icon
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   // user info
   const { data: session } = authClient.useSession();
@@ -59,7 +70,7 @@ export default function Navbar() {
   };
 
   return (
-    <header>
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm">
       <nav className="relative mx-auto flex min-h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
@@ -74,14 +85,14 @@ export default function Navbar() {
         {/* Center links */}
         <div
           className={`${isMenuOpen ? "flex" : "hidden"
-            } absolute left-0 right-0 top-full flex-col gap-4 border-t bg-background/95 px-4 py-5 shadow-md sm:static sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-7 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none`}
+            } absolute left-0 right-0 top-full z-40 flex-col gap-4 border-t bg-background/95 px-4 py-5 shadow-md overflow-y-auto max-h-[calc(100vh-4rem)] sm:static sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-7 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none` }
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}   // 👈 add this
-              className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href
+              className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href || (link.href.includes("#") && pathname === "/" && window.location.hash === link.href.split("#")[1])
                   ? "bg-amber-100 text-amber-500 dark:bg-amber-950 dark:text-amber-400"
                   : "text-gray-900 dark:text-gray-100"
                 }`}

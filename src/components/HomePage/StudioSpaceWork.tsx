@@ -2,17 +2,10 @@
 
 import Link from "next/link"
 import { ArrowRight, Search, CalendarDays, Zap, Sparkles } from "lucide-react"
-import type { LucideIcon } from "lucide-react"
+import { TStep } from "../Type/type"
 
-type Step = {
-  label: string
-  title: string
-  description: string
-  icon: LucideIcon
-  iconBg: string
-}
 
-const steps: Step[] = [
+const steps: TStep[] = [
   {
     label: "01",
     title: "Discover Spaces",

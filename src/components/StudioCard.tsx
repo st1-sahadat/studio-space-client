@@ -4,7 +4,6 @@ import { IStudio } from "./Type/type";
 import Link from "next/link";
 
 const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
-console.log(Studio);
 
     return (
         <div className="flex flex-wrap gap-6">

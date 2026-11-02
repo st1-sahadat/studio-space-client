@@ -28,15 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
-        <div className="container mx-auto flex flex-1 flex-col px-4 sm:px-6 lg:px-8">
-          {/* <ThemeProvider attribute="class" enableSystem defaultTheme="system"> */}
-            <Navbar />
-            <main className="flex-1">
-              {children}
-            </main>
-            <Footer />
-          {/* </ThemeProvider> */}
-        </div>
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

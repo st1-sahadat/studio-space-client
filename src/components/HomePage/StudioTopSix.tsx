@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import StudioCard from './StudioCard';
-import { IStudio } from './Type/type';
+import StudioCard from '../StudioCard';
+import { IStudio } from '../Type/type';
 
 const StudioTopSixPage = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/studio-top-6`, {

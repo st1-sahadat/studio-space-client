@@ -1,3 +1,5 @@
+import { LucideIcon } from "lucide-react/dist/lucide-react.suffixed.js";
+
 export interface IStudio {
     _id: string;
     category: string;
@@ -9,4 +11,13 @@ export interface IStudio {
     capacity: string;
     deposit: number;
     image_link: string;
+}
+
+
+export type TStep = {
+  label: string
+  title: string
+  description: string
+  icon: LucideIcon
+  iconBg: string
 }

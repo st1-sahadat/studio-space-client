@@ -1,7 +1,8 @@
+import AboutUs from "@/components/HomePage/AboutUs";
 import { BannerPage } from "@/components/HomePage/Banner";
 import { CategorySection } from "@/components/HomePage/CategorySection";
-import StudioSpaceWork from "@/components/StudioSpaceWork";
-import StudioTopSixPage from "@/components/StudioTopSix";
+import StudioSpaceWork from "@/components/HomePage/StudioSpaceWork";
+import StudioTopSixPage from "@/components/HomePage/StudioTopSix";
 
 export default function Home() {
   return (
@@ -9,8 +10,11 @@ export default function Home() {
       <BannerPage />
       <CategorySection />
       <StudioTopSixPage />
-      <section id="about" className="scroll-mt-20">
+      <section id="howItWorks" className="scroll-mt-20">
         <StudioSpaceWork />
+      </section>
+      <section id="aboutUs" className="scroll-mt-20">
+        <AboutUs />
       </section>
     </div>
   );
