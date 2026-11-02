@@ -19,6 +19,7 @@ export interface TBooking extends IStudio {
   email?: string;
   bookingDate: string;
   status?: string;
+  image: string;
 };
 
 

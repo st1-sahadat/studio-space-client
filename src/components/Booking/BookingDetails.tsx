@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 import BookingCard from './BookingButton';
-import { IStudio } from '../Type/type';
+import { IStudio, TBooking } from '../Type/type';
 
-const BookingDetailsPage = ({data} : {data: IStudio}) => {
-    console.log(data);
+const BookingDetailsPage = ({data} : {data: TBooking}) => {
     
     return (
         <div>

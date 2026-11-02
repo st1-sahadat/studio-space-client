@@ -57,7 +57,7 @@ const UserCardPage = ({ bookings }: { bookings: TBooking[] }) => {
                                             </div>
                                             <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                                                 <div><p className="text-[10px] font-bold leading-none tracking-wider text-slate-400">HOURLY RATE</p><p className="mt-1 text-2xl font-black leading-none text-indigo-700">${booking.price_per_hour}<span className="text-sm font-medium text-slate-400"> / hour</span></p></div>
-                                                <Link href={`/my-bookings//${booking._id}`}>
+                                                <Link href={`/my-bookings/${booking._id}`}>
                                                     <Button type="button">
                                                         View details →
                                                     </Button>

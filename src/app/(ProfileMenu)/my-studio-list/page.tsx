@@ -1,5 +1,5 @@
+import ListCardPage from '@/components/ListCard';
 import { TBooking } from '@/components/Type/type';
-import UserCardPage from '@/components/UserCard';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
 import React from 'react';
@@ -10,10 +10,11 @@ const MyStudioListPage = async() => {
         })
         const user = session?.user
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/studio/${user?.email}`)
-        const bookings: TBooking[] = await res.json()
+        const listing: TBooking[] = await res.json()
+        
     return (
         <div>
-        <UserCardPage bookings={bookings} />
+        <ListCardPage listing={listing} />
         </div>
     );
 };
