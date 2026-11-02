@@ -7,6 +7,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel, FieldSeparator } from 
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function SignInForm() {
   const handleEmailSignIn = async (e: React.SubmitEvent<HTMLElement>) => {
@@ -18,7 +19,6 @@ export default function SignInForm() {
       ...user,
       rememberMe: true
     });
-console.log(data);
 
     if (!user.email || !user.password) {
       console.error("Missing required fields", user);
@@ -28,6 +28,18 @@ console.log(data);
       redirect("/");
     } else if (error) {
       console.log(error);
+      toast.error("Invalid email or password.");
+    }
+  };
+  // Google sign in
+  const handleGoogleSignIn = async () => {
+    const { data, error } = await authClient.signIn.social({
+      provider: "google",
+    });
+    if (data) {
+      toast.success('Sign-In Successful');
+    } else if (error) {
+      toast.error(error.message ?? 'Sign in failed');
     }
   };
 
@@ -36,7 +48,7 @@ console.log(data);
       <Card className="w-full p-12 bg-background/95 backdrop-blur rounded-lg shadow-sm">
         <CardHeader className="text-center">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-500 text-amber-950">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
           </div>
           <CardTitle className="text-3xl font-extrabold tracking-tight text-foreground text-center">
             Creator Login
@@ -114,6 +126,14 @@ console.log(data);
                 className="mt-2 w-full rounded-xl bg-amber-500 py-3.5 text-lg font-bold text-white shadow-lg shadow-amber-500/20 hover:bg-amber-600 hover:shadow-amber-500/30 transition-all duration-200"
               >
                 Sign In
+              </Button>
+
+              <Button
+                onClick={handleGoogleSignIn}
+                className="mt-2 w-full rounded-lg border border-amber-500 text-amber-500 text-sm font-medium py-3 hover:bg-amber-600 hover:text-white transition-colors duration-200 flex items-center justify-center gap-2"
+                type="button"
+              >
+                Continue with Google
               </Button>
 
               <div className="mt-2 text-center text-sm text-muted-foreground">

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { authClient } from "@/lib/auth-client";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -29,8 +29,15 @@ const accountLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  // responsive icon
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const currentHash = useSyncExternalStore(
+    (onStoreChange) => {
+      window.addEventListener("hashchange", onStoreChange);
+      return () => window.removeEventListener("hashchange", onStoreChange);
+    },
+    () => window.location.hash,
+    () => ""
+  );
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -42,7 +49,6 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
-
   // user info
   const { data: session } = authClient.useSession();
   const user = session?.user;
@@ -55,6 +61,13 @@ export default function Navbar() {
     href: string
   ) => {
     setIsMenuOpen(false);
+
+    if (href === "/" && pathname === "/") {
+      e.preventDefault();
+      window.history.replaceState(null, "", "/");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
 
     // Only intercept hash links
     if (!href.startsWith("/#")) return;
@@ -85,17 +98,20 @@ export default function Navbar() {
         {/* Center links */}
         <div
           className={`${isMenuOpen ? "flex" : "hidden"
-            } absolute left-0 right-0 top-full z-40 flex-col gap-4 border-t bg-background/95 px-4 py-5 shadow-md overflow-y-auto max-h-[calc(100vh-4rem)] sm:static sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-7 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none` }
+            } absolute left-0 right-0 top-full z-40 flex-col gap-4 border-t bg-background/95 px-4 py-5 shadow-md overflow-y-auto max-h-[calc(100vh-4rem)] sm:static sm:flex sm:flex-row sm:items-center sm:justify-center sm:gap-7 sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none`}
         >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              onClick={(e) => handleNavClick(e, link.href)}   // 👈 add this
-              className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${pathname === link.href || (link.href.includes("#") && pathname === "/" && window.location.hash === link.href.split("#")[1])
+              onClick={(e) => handleNavClick(e, link.href)} 
+              className={`rounded-2xl p-2 text-center transition-colors hover:text-cyan-600 dark:hover:text-cyan-400 ${
+                (link.href === "/" && pathname === "/" && !currentHash) ||
+                (link.href !== "/" && !link.href.includes("#") && pathname === link.href) ||
+                (link.href.includes("#") && pathname === "/" && currentHash === `#${link.href.split("#")[1]}`)
                   ? "bg-amber-100 text-amber-500 dark:bg-amber-950 dark:text-amber-400"
                   : "text-gray-900 dark:text-gray-100"
-                }`}
+              }`}
             >
               {link.label}
             </Link>

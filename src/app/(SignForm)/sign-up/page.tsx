@@ -6,6 +6,7 @@ import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function SignUpForm() {
   const handleEmailSignUp = async (e: React.SubmitEvent<HTMLElement>) => {
@@ -26,6 +27,17 @@ export default function SignUpForm() {
       console.log(error);
     }
   };
+  // Google sign in
+    const handleGoogleSignIn = async () => {
+        const { data, error } = await authClient.signIn.social({
+            provider: "google",
+        });
+        if (data) {
+            toast.success('Sign-In Successful');
+        } else if (error) {
+            toast.error(error.message ?? 'Sign in failed');
+        }
+    };
 
   return (
     <div className="mx-auto flex m-20 p-10 max-w-md flex-col gap-4 px-4 sm:gap-6 sm:px-0">
@@ -114,6 +126,14 @@ export default function SignUpForm() {
                   Sign Up
                 </Button>
               </div>
+
+              <Button
+                onClick={handleGoogleSignIn}
+                className="mt-2 w-full rounded-lg border border-amber-500 text-amber-500 text-sm font-medium py-3 hover:bg-amber-600 hover:text-white transition-colors duration-200 flex items-center justify-center gap-2"
+                type="button"
+              >
+                Continue with Google
+              </Button>
 
               <FieldDescription className="text-center mt-4 text-sm text-muted-foreground">
                 Already have an account? <a href="/sign-in" className="text-amber-500 hover:underline">Sign in</a>
