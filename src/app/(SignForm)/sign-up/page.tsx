@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { toast } from "react-toastify";
 
@@ -97,25 +98,34 @@ export default function SignUpForm() {
               </Field>
 
               <Field>
-                <div className="flex items-center">
-                  <FieldLabel htmlFor="password" className="text-sm text-muted-foreground">
-                    Password
-                  </FieldLabel>
-                  <a
-                    href="#"
-                    className="ml-auto text-sm underline-offset-4 hover:underline text-muted-foreground"
-                  >
-                    Forgot your password?
-                  </a>
+                <div className="flex items-center justify-between">
+                  <FieldLabel htmlFor="password" className="text-sm font-medium text-muted-foreground">Password</FieldLabel>
+                  <Link href="#" className="ml-auto text-sm text-amber-500 hover:text-amber-600 hover:underline">Forgot your password?</Link>
                 </div>
-                <Input
+                <div className="relative mt-1">
+                  <span className="absolute left-3 top-2.5 text-muted-foreground">🔒</span>
+                  <Input
                   id="password"
                   name="password"
                   type="password"
                   placeholder="Create a secure password"
                   required
+                  minLength={6}
+                  pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                  title="Password must be at least 6 characters long and include an uppercase and a lowercase letter."
                   className="h-11 w-full rounded-lg border border-border bg-background px-4 text-sm text-foreground shadow-sm transition-colors placeholder:text-muted-foreground/70 focus-visible:border-amber-500 focus-visible:ring-2 focus-visible:ring-amber-500/20"
                 />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const p = document.getElementById("password") as HTMLInputElement;
+                      if (p) p.type = p.type === "password" ? "text" : "password";
+                    }}
+                    className="absolute right-3 top-2.5 text-xs text-muted-foreground hover:text-foreground"
+                  >
+                    👁
+                  </button>
+                </div>
               </Field>
 
               <div className="flex items-center justify-between">

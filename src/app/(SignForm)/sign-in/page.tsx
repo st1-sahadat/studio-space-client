@@ -92,7 +92,7 @@ export default function SignInForm() {
                   />
                 </div>
               </Field>
-
+                {/* password */}
               <Field>
                 <div className="flex items-center justify-between">
                   <FieldLabel htmlFor="password" className="text-sm font-medium text-muted-foreground">Password</FieldLabel>
