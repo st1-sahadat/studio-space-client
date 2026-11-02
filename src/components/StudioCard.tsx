@@ -13,13 +13,11 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                     className="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
                     <div className="relative h-48 w-full sm:h-56 lg:h-64">
-                        <Image
-                            width={300}
-                            height={300}
-                            src={item.image_link}
-                            alt={item.title}
-                            className="h-full w-full object-cover"
-                        />
+                        {item.image_link ? (
+                            <Image height={200} width={300} src={item.image_link} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                        ) : (
+                            <div className="h-full w-full bg-slate-200" aria-label={`${item.title} placeholder`} />
+                        )}
 
                         {/* Category Badge */}
                         <div className="absolute left-4 top-4 rounded-full bg-purple-100/90 px-3 py-1 text-xs font-semibold text-purple-700 backdrop-blur-sm">
@@ -79,10 +77,10 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
 
                         {/* Action Button */}
                         <Link href={`/studios/${item._id}`}>
-                        <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] py-3 text-sm font-semibold text-white transition hover:bg-black">
-                            View Details
-                            <ArrowRight className="h-4 w-4" />
-                        </button>
+                            <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] py-3 text-sm font-semibold text-white transition hover:bg-black">
+                                View Details
+                                <ArrowRight className="h-4 w-4" />
+                            </button>
                         </Link>
                     </div>
                 </div>
