@@ -13,6 +13,14 @@ export interface IStudio {
     image_link: string;
 }
 
+export interface TBooking extends IStudio {
+  _id: string;
+  userName?: string;
+  email?: string;
+  bookingDate: string;
+  status?: string;
+};
+
 
 export type TStep = {
   label: string

@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { authClient } from "@/lib/auth-client";
 // import { getTokenFromClient } from "@/lib/getTokenFronClient";
 
 const categories = [
@@ -44,35 +45,44 @@ const AddStudioPage = () => {
   const [form, setForm] = useState<TFormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);  
+    // user info
+    const { data: session } = authClient.useSession();
+    const user = session?.user;
 
   const handleInputChange =
     (field: keyof Omit<TFormState, "category">) =>
-    (
-      event: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
-    ) =>
-      setForm((prev) => ({ ...prev, [field]: event.target.value }));
+      (
+        event: React.ChangeEvent<
+          HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+        >
+      ) =>
+        setForm((prev) => ({ ...prev, [field]: event.target.value }));
 
   const handleCategoryChange = (value: unknown) =>
     setForm((prev) => ({ ...prev, category: String(value ?? "") }));
+
+
+
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
     setError(null);
     setLoading(true);
-
     // Convert numeric strings to actual numbers to match your API payload
     const payload = {
+      userName: user?.name,
+      email: user?.email,
+      image: user?.image,
+      bookingDate: new Date(),
       ...form,
       price_per_hour: Number(form.price_per_hour),
       rating: Number(form.rating),
       deposit: Number(form.deposit),
     };
     console.log(payload);
-    
+
     try {
       // const token = await getTokenFromClient();
       const res = await fetch(
