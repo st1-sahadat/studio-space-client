@@ -10,7 +10,7 @@ export interface IStudio {
     description: string;
     capacity: string;
     deposit: number;
-    image_link: string;
+    image_link: string | null;
 }
 
 export interface TBooking extends IStudio {

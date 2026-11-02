@@ -38,7 +38,11 @@ const UserCardPage = ({ bookings }: { bookings: TBooking[] }) => {
                                 <article key={booking._id || `${booking.email}-${index}`} className="group overflow-hidden rounded-3xl border border-slate-200 bg-white leading-tight shadow-[0_8px_30px_rgba(15,23,42,0.05)] transition hover:-translate-y-1 hover:shadow-xl">
                                     <div className="flex flex-col sm:flex-row">
                                         <div className="relative h-40 shrink-0 overflow-hidden sm:h-48 sm:w-48">
-                                            <Image height={200} width={300} src={booking.image_link} alt={booking.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                            {booking.image_link ? (
+                                                <Image src={booking.image_link} alt={booking.title} width={300} height={200} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                            ) : (
+                                                <div className="h-full w-full bg-slate-200" aria-label={`${booking.title} placeholder`} />
+                                            )}
                                             <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[11px] font-bold text-indigo-700 shadow-sm">UPCOMING</span>
                                         </div>
                                         <div className="flex flex-1 flex-col justify-between p-5 sm:p-6">

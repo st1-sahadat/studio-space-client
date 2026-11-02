@@ -28,7 +28,14 @@ const BookingDetailsPage = ({data} : {data: TBooking}) => {
 
                 <section className="mb-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl shadow-slate-300/50">
                     <div className="relative h-88 sm:h-128 lg:h-152">
-                           <Image fill priority src={data.image_link} alt={data.title} className="object-cover" />
+                        <Image 
+                            fill 
+                            priority 
+                            src={data.image_link ?? ''} 
+                            alt={data.title} 
+                            className="object-cover" 
+                            sizes="(max-width: 1024px) 100vw, 1024px"
+                        />
                         <div className="absolute inset-0 bg-linear-to-t from-slate-950/75 via-transparent to-transparent" />
                         <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
                             <p className="max-w-md text-sm font-medium leading-6 text-slate-200">A considered space for bold ideas, beautiful frames, and unforgettable productions.</p>
@@ -37,7 +44,7 @@ const BookingDetailsPage = ({data} : {data: TBooking}) => {
                     </div>
                     <div className="flex gap-3 bg-white/95 p-4">
                         <div className="relative h-20 w-28 overflow-hidden rounded-2xl ring-2 ring-amber-400 ring-offset-2">
-                            <Image fill src={data.image_link} alt="Studio preview" className="object-cover" />
+                            <Image fill src={data.image_link ?? ''} alt="Studio preview" className="object-cover" />
                         </div>
                         <div className="flex h-20 w-28 items-center justify-center rounded-2xl bg-slate-100 text-2xl text-slate-400 transition hover:bg-amber-100">＋</div>
                     </div>
