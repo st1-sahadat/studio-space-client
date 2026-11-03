@@ -1,13 +1,14 @@
 "use client";
 import { Button } from '@base-ui/react';
 import { Heart } from 'lucide-react';
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { IStudio } from './Type/type';
+import { studioContext } from '@/app/context/studioContext';
 
 const CardInsideHeartButton = ({ AllStudio, ItemId }: { AllStudio: IStudio[]; ItemId: string }) => {
     console.log(ItemId);
-    
-    const [liked, setLiked] = useState<IStudio[]>([]);
+    const {liked, setLiked} = useContext(studioContext);
+
     const findStudio : IStudio[] = AllStudio.filter((studio) => studio._id === ItemId);
     const handleClick = () => {
         setLiked(findStudio);

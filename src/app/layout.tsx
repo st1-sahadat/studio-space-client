@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "next-themes";
 import { Footer } from "@/components/HomePage/Footer";
 import Navbar from "@/components/HomePage/Navbar";
 import { Bounce, ToastContainer } from "react-toastify";
+import StudioProvider from "./context/studioContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
+        <StudioProvider>
         <Navbar />
         {children}
         <Footer />
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           theme="light"
           transition={Bounce}
         />
+        </StudioProvider>
       </body>
     </html>
   );
