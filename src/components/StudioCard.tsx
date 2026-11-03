@@ -1,7 +1,8 @@
-import { Heart, Star, MapPin, Users, ArrowRight } from "lucide-react";
+import {  Star, MapPin, Users, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { IStudio } from "./Type/type";
 import Link from "next/link";
+import CardInsideHeartButton from "./CardInsideHeart";
 
 const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
 
@@ -25,9 +26,10 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                         </div>
 
                         {/* Favorite Button */}
-                        <button className="absolute right-4 top-4 rounded-full bg-black/40 p-2 text-white backdrop-blur-sm transition hover:bg-black/60">
-                            <Heart className="h-5 w-5" />
-                        </button>
+                        <CardInsideHeartButton 
+                          AllStudio={Studio}    
+                          ItemId={item._id}                       
+                        />
 
                         {/* Price & Rating Overlay */}
                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">

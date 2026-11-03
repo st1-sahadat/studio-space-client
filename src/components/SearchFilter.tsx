@@ -5,7 +5,6 @@ import { IStudio } from './Type/type';
 
 const SearchFilterPage = ({data} : {data: IStudio[]}) => {
     const AllData = data.map((studio) => (studio));
-    console.log(AllData);
     
 
     return (

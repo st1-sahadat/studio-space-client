@@ -24,7 +24,7 @@ const ListCardPage = ({ listing }: { listing: TBooking[] }) => {
                 {listing.length === 0 ? (
                     <div className="rounded-3xl border border-dashed border-slate-300 bg-white px-6 py-20 text-center shadow-sm">
                         <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-50 text-2xl">✦</div>
-                        <h2 className="text-xl font-bold">No bookings yet</h2>
+                        <h2 className="text-xl font-bold">No Listing Data Yet</h2>
                         <p className="mt-2 text-sm text-slate-500">Your next production adventure starts here.</p>
                     </div>
                 ) : (

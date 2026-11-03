@@ -10,8 +10,6 @@ const StudioTopSixPage = async () => {
         throw new Error(`Failed to fetch studio: ${res.status}`);
     }
     const data: IStudio[] = await res.json();
-    console.log(data);
-
 
     return (
         <div className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 lg:px-8">

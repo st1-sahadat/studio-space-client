@@ -2,7 +2,6 @@ import ListCardPage from '@/components/ListCard';
 import { TBooking } from '@/components/Type/type';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
-import React from 'react';
 
 const MyStudioListPage = async() => {
     const session = await auth.api.getSession({

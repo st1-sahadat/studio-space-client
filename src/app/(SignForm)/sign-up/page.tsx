@@ -28,15 +28,15 @@ export default function SignUpForm() {
       console.log(error);
     }
   };
-  // Google sign in
-    const handleGoogleSignIn = async () => {
+  // Google sign up
+    const handleGoogleSignUp = async () => {
         const { data, error } = await authClient.signIn.social({
             provider: "google",
         });
         if (data) {
-            toast.success('Sign-In Successful');
+            toast.success('Sign-Up Successful');
         } else if (error) {
-            toast.error(error.message ?? 'Sign in failed');
+            toast.error(error.message ?? 'Sign-Up failed');
         }
     };
 
@@ -138,7 +138,7 @@ export default function SignUpForm() {
               </div>
 
               <Button
-                onClick={handleGoogleSignIn}
+                onClick={handleGoogleSignUp}
                 className="mt-2 w-full rounded-lg border border-amber-500 text-amber-500 text-sm font-medium py-3 hover:bg-amber-600 hover:text-white transition-colors duration-200 flex items-center justify-center gap-2"
                 type="button"
               >
