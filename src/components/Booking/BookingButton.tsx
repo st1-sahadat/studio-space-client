@@ -17,7 +17,6 @@ const BookingCard = ({ studio }: { studio: IStudio }) => {
             ...studioData,
             bookingDate: new Date(),
         }
-        console.log(data);
         
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking`, {
             method: 'POST',

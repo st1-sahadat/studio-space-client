@@ -1,7 +1,6 @@
 import BookingDetailsPage from '@/components/Booking/BookingDetails';
 import { auth } from '@/lib/auth';
 import { headers } from 'next/headers';
-import React from 'react';
 
 const MyBookingPage = async (props: PageProps<"/my-bookings/[Id]">) => {
     const { Id } = await props.params;

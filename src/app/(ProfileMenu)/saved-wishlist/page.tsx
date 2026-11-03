@@ -1,16 +1,20 @@
-"use client";
-import { studioContext } from '@/app/context/studioContext';
-import { useContext } from 'react';
+import { TBooking } from "@/components/Type/type";
+import WishListCardPage from "@/components/WishListCard";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
-const  SavedWishlistPage = () => {
-        const {liked, setLiked} = useContext(studioContext);
-        console.log(liked);
-        
+
+const SavedWishlistPage = async () => {
+    const session = await auth.api.getSession({
+        headers: await headers() // you need to pass the headers object.
+    })
+    const user = session?.user
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-wishlist/${user?.email}`)
+    const wishlist: TBooking[] = await res.json()
+
     return (
-        <div>
-            <h2>Saved Wishlist</h2>
-        </div>
+        <WishListCardPage wishlist={wishlist} />
     );
 };
 
-export default  SavedWishlistPage;
+export default SavedWishlistPage;

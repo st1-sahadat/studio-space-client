@@ -30,7 +30,6 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                           AllStudio={Studio}    
                           ItemId={item._id}                       
                         />
-
                         {/* Price & Rating Overlay */}
                         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
                             <div className="flex items-center gap-1 rounded-full bg-black/60 px-3 py-1 text-white backdrop-blur-sm">
@@ -44,7 +43,6 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                             </div>
                         </div>
                     </div>
-
                     {/* Content Container */}
                     <div className="p-5">
                         {/* Location */}
@@ -52,20 +50,16 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                             <MapPin className="h-4 w-4 text-gray-400" />
                             <span>{item.location}</span>
                         </div>
-
                         {/* Title */}
                         <h3 className="mt-2 text-xl font-bold text-gray-900 truncate">
                             {item.title}
                         </h3>
-
                         {/* Description */}
                         <p className="mt-2 text-sm text-gray-500 line-clamp-2">
                             {item.description}
                         </p>
-
                         {/* Divider */}
                         <hr className="my-4 border-gray-100" />
-
                         {/* Footer Details */}
                         <div className="flex items-center justify-between text-sm text-gray-500">
                             <div className="flex items-center gap-1.5">
@@ -76,7 +70,6 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                                 <span>Deposit: ${item.deposit}</span>
                             </div>
                         </div>
-
                         {/* Action Button */}
                         <Link href={`/studios/${item._id}`}>
                             <button className="mt-5 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1A1A1A] py-3 text-sm font-semibold text-white transition hover:bg-black">
