@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { CalendarPlus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { authClient } from "@/lib/auth-client";
+import { toast } from "react-toastify";
 // import { getTokenFromClient } from "@/lib/getTokenFronClient";
 
 const categories = [
@@ -42,6 +44,7 @@ const inputClasses =
   "h-10 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30";
 
 const AddStudioPage = () => {
+  const router = useRouter();
   const [form, setForm] = useState<TFormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -65,7 +68,7 @@ const AddStudioPage = () => {
 
 
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitted(true);
     setError(null);
@@ -81,27 +84,23 @@ const AddStudioPage = () => {
       rating: Number(form.rating),
       deposit: Number(form.deposit),
     };
-    console.log(payload);
-
     try {
-      // const token = await getTokenFromClient();
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/studio`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            // authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(payload),
         }
       );
-
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
-
       await res.json();
+      toast.success("Studio added successfully!");
       setForm(initialForm);
       setSubmitted(false);
+      router.push("/my-studio-list");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {

@@ -6,6 +6,8 @@ import { TBooking } from "./Type/type";
 
 
 const WishListCardPage = ({ wishlist }: { wishlist: TBooking[] }) => {
+    console.log(wishlist);
+    
     return (
         <div>
             <main className="min-h-screen bg-[#f7f8fc] px-4 py-10 text-slate-900 sm:px-8 lg:px-16">
@@ -61,7 +63,7 @@ const WishListCardPage = ({ wishlist }: { wishlist: TBooking[] }) => {
                                                 </div>
                                                 <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                                                     <div><p className="text-[10px] font-bold leading-none tracking-wider text-slate-400">HOURLY RATE</p><p className="mt-1 text-2xl font-black leading-none text-indigo-700">${wishlist.price_per_hour}<span className="text-sm font-medium text-slate-400"> / hour</span></p></div>
-                                                    <Link href={`/my-wishlist/${wishlist._id}`}>
+                                                    <Link href={`/saved-wishlist/${wishlist._id}`}>
                                                         <Button type="button">
                                                             View details →
                                                         </Button>

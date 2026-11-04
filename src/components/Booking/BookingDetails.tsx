@@ -29,7 +29,7 @@ const BookingDetailsPage = ({ data }: { data: TBooking }) => {
                     <section className="mb-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl shadow-slate-300/50">
                         <div className="relative h-88 sm:h-128 lg:h-152">
                             {data.image_link ? (
-                                <Image height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                <Image loading="lazy" height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                             ) : (
                                 <div className="h-full w-full bg-slate-200" aria-label={`${data.title} placeholder`} />
                             )}
@@ -42,10 +42,11 @@ const BookingDetailsPage = ({ data }: { data: TBooking }) => {
                         <div className="flex gap-3 bg-white/95 p-4">
                             <div className="relative h-20 w-28 overflow-hidden rounded-2xl ring-2 ring-amber-400 ring-offset-2">
                                 {data.image_link ? (
-                                    <Image height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                    <Image loading="lazy" height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                                 ) : (
                                     <div className="h-full w-full bg-slate-200" aria-label={`${data.title} placeholder`} />
-                                )}                            </div>
+                                )} 
+                                </div>
                             <div className="flex h-20 w-28 items-center justify-center rounded-2xl bg-slate-100 text-2xl text-slate-400 transition hover:bg-amber-100">＋</div>
                         </div>
                     </section>
