@@ -10,9 +10,6 @@ const StudioPage = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/studio`, {
     cache: "no-store",
   });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch studio: ${res.status}`);
-  }
   const data: IStudio[] = await res.json();
 
   return (

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { getTokenFromClient } from "@/lib/getTokenFronClient";
 // import { getTokenFromClient } from "@/lib/getTokenFronClient";
 
 const categories = [
@@ -48,10 +49,10 @@ const AddStudioPage = () => {
   const [form, setForm] = useState<TFormState>(initialForm);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);  
-    // user info
-    const { data: session } = authClient.useSession();
-    const user = session?.user;
+  const [error, setError] = useState<string | null>(null);
+  // user info
+  const { data: session } = authClient.useSession();
+  const user = session?.user;
 
   const handleInputChange =
     (field: keyof Omit<TFormState, "category">) =>
@@ -85,12 +86,14 @@ const AddStudioPage = () => {
       deposit: Number(form.deposit),
     };
     try {
+      const token = await getTokenFromClient();
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_API_URL}/studio`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            authorization: `Bearer ${token}`
           },
           body: JSON.stringify(payload),
         }

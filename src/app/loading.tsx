@@ -1,11 +1,7 @@
-import React from 'react';
+import PageLoader from "@/components/PageLoader";
 
 const loading = () => {
-    return (
-        <div className='bg-white'>
-            Loading......
-        </div>
-    );
+  return <PageLoader />;
 };
 
 export default loading;

@@ -2,6 +2,13 @@ import Image from 'next/image';
 import React from 'react';
 import BookingCard from './BookingButton';
 import { TBooking } from '../Type/type';
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const BookingDetailsPage = ({ data }: { data: TBooking }) => {
 
@@ -28,11 +35,19 @@ const BookingDetailsPage = ({ data }: { data: TBooking }) => {
 
                     <section className="mb-8 overflow-hidden rounded-[2rem] bg-slate-950 shadow-2xl shadow-slate-300/50">
                         <div className="relative h-88 sm:h-128 lg:h-152">
-                            {data.image_link ? (
-                                <Image loading="lazy" height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-                            ) : (
-                                <div className="h-full w-full bg-slate-200" aria-label={`${data.title} placeholder`} />
-                            )}
+                            <Carousel className="h-full w-full">
+                                <CarouselContent className="ml-0 h-full">
+                                    <CarouselItem className="relative h-full pl-0">
+                                        {data.image_link ? (
+                                            <Image loading="lazy" height={200} width={300} src={data.image_link} alt={data.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                                        ) : (
+                                            <div className="h-full w-full bg-slate-200" aria-label={`${data.title} placeholder`} />
+                                        )}
+                                    </CarouselItem>
+                                </CarouselContent>
+                                <CarouselPrevious className="left-5 border-white/30 bg-slate-950/60 text-white hover:bg-slate-950/80 hover:text-white" />
+                                <CarouselNext className="right-5 border-white/30 bg-slate-950/60 text-white hover:bg-slate-950/80 hover:text-white" />
+                            </Carousel>
                             <div className="absolute inset-0 bg-linear-to-t from-slate-950/75 via-transparent to-transparent" />
                             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 text-white sm:bottom-7 sm:left-7 sm:right-7">
                                 <p className="max-w-md text-sm font-medium leading-6 text-slate-200">A considered space for bold ideas, beautiful frames, and unforgettable productions.</p>
