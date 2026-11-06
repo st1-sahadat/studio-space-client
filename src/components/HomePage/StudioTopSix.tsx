@@ -19,10 +19,10 @@ const StudioTopSixPage = async () => {
                         <span className="text-[9px]">✣</span>
                         Curated selection {data.length}
                     </span>
-                    <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-[22px]">
+                    <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-neutral-50 sm:text-[22px]">
                         Featured Creative Workspaces
                     </h2>
-                    <p className="mt-1 max-w-md text-xs leading-5 text-slate-500">
+                    <p className="mt-1 max-w-md text-xs leading-5 text-slate-500 dark:text-neutral-400">
                         Hand-inspected production facilities and studio suites top-rated by
                         professional directors, producers, and audio engineers.
                     </p>

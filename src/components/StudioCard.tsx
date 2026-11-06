@@ -11,17 +11,17 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
             {Studio.map((item) => (
                 <div
                     key={item.title}
-                    className="w-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
+                    className="w-full overflow-hidden rounded-2xl border border-gray-100 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm sm:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)]"
                 >
                     <div className="relative h-48 w-full sm:h-56 lg:h-64">
                         {item.image_link ? (
                             <Image height={200} width={300} src={item.image_link} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                         ) : (
-                            <div className="h-full w-full bg-slate-200" aria-label={`${item.title} placeholder`} />
+                            <div className="h-full w-full bg-slate-200 dark:bg-neutral-800" aria-label={`${item.title} placeholder`} />
                         )}
 
                         {/* Category Badge */}
-                        <div className="absolute left-4 top-4 rounded-full bg-purple-100/90 px-3 py-1 text-xs font-semibold text-purple-700 backdrop-blur-sm">
+                        <div className="absolute left-4 top-4 rounded-full bg-purple-100/90 px-3 py-1 text-xs font-semibold text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 backdrop-blur-sm">
                             {item.category}
                         </div>
 
@@ -46,24 +46,24 @@ const StudioCard = ({ Studio }: { Studio: IStudio[] }) => {
                     {/* Content Container */}
                     <div className="p-5">
                         {/* Location */}
-                        <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                            <MapPin className="h-4 w-4 text-gray-400" />
+                        <div className="flex items-center gap-1.5 text-sm text-gray-500 dark:text-neutral-400">
+                            <MapPin className="h-4 w-4 text-gray-400 dark:text-neutral-500" />
                             <span>{item.location}</span>
                         </div>
                         {/* Title */}
-                        <h3 className="mt-2 text-xl font-bold text-gray-900 truncate">
+                        <h3 className="mt-2 text-xl font-bold text-gray-900 dark:text-neutral-50 truncate">
                             {item.title}
                         </h3>
                         {/* Description */}
-                        <p className="mt-2 text-sm text-gray-500 line-clamp-2">
+                        <p className="mt-2 text-sm text-gray-500 dark:text-neutral-400 line-clamp-2">
                             {item.description}
                         </p>
                         {/* Divider */}
-                        <hr className="my-4 border-gray-100" />
+                        <hr className="my-4 border-gray-100 dark:border-neutral-800" />
                         {/* Footer Details */}
-                        <div className="flex items-center justify-between text-sm text-gray-500">
+                        <div className="flex items-center justify-between text-sm text-gray-500 dark:text-neutral-400">
                             <div className="flex items-center gap-1.5">
-                                <Users className="h-4 w-4 text-gray-400" />
+                                <Users className="h-4 w-4 text-gray-400 dark:text-neutral-500" />
                                 <span>{item.capacity}</span>
                             </div>
                             <div>

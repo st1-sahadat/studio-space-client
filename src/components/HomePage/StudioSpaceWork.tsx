@@ -12,7 +12,7 @@ const steps: TStep[] = [
     description:
       "Filter verified cyc walls, podcast lounges, soundstages, and mixing suites by location, gear inventory, and creator reviews.",
     icon: Search,
-    iconBg: "bg-[#FDE8C8] text-[#D4982B]",
+    iconBg: "bg-[#FDE8C8] text-[#D4982B] dark:bg-amber-950/60 dark:text-amber-400",
   },
   {
     label: "02",
@@ -20,7 +20,7 @@ const steps: TStep[] = [
     description:
       "Inspect live calendar availability, choose precise hourly blocks, and review transparent breakdown rates with zero surprise fees.",
     icon: CalendarDays,
-    iconBg: "bg-[#DDF3F8] text-[#2A9BC6]",
+    iconBg: "bg-[#DDF3F8] text-[#2A9BC6] dark:bg-sky-950/60 dark:text-sky-400",
   },
   {
     label: "03",
@@ -28,7 +28,7 @@ const steps: TStep[] = [
     description:
       "Lock in your reservation with double-booking collision prevention, instant host confirmation, and downloadable invoice vouchers.",
     icon: Zap,
-    iconBg: "bg-[#DDF6EE] text-[#2BA877]",
+    iconBg: "bg-[#DDF6EE] text-[#2BA877] dark:bg-emerald-950/60 dark:text-emerald-400",
   },
   {
     label: "04",
@@ -36,7 +36,7 @@ const steps: TStep[] = [
     description:
       "Arrive at the stage with verified access codes, plug into ready-calibrated equipment grids, and bring your vision to life.",
     icon: Sparkles,
-    iconBg: "bg-[#F5EAFD] text-[#A56FD4]",
+    iconBg: "bg-[#F5EAFD] text-[#A56FD4] dark:bg-purple-950/60 dark:text-purple-300",
   },
 ]
 
@@ -44,13 +44,13 @@ export default function StudioSpaceWork() {
   return (
     <section className="px-4 py-12 sm:px-6 sm:py-16 lg:py-24">
       <div className="text-center">
-        <span className="inline-block rounded-full bg-[#FFF8E7] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-[#CFA22A]">
+        <span className="inline-block rounded-full bg-[#FFF8E7] px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-[#CFA22A] dark:bg-amber-950/40 dark:text-amber-400">
           Frictionless Booking
         </span>
-        <h2 className="mt-5 text-[2.25rem] font-extrabold leading-tight tracking-tight text-[#1A1816] sm:text-5xl lg:text-[3.5rem]">
+        <h2 className="mt-5 text-[2.25rem] font-extrabold leading-tight tracking-tight text-[#1A1816] dark:text-neutral-50 sm:text-5xl lg:text-[3.5rem]">
           How StudioSpace Works
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-[#6B655D] sm:text-lg">
+        <p className="mt-4 text-base leading-relaxed text-[#6B655D] dark:text-neutral-400 sm:text-lg">
           Four simple steps from pre-production concept to rolling camera in world-class creative facilities.
         </p>
       </div>
@@ -60,28 +60,28 @@ export default function StudioSpaceWork() {
           <div key={title} className="flex w-full items-center gap-3 sm:w-auto lg:gap-4">
             <Link
               href="/spaces"
-              className="group relative flex min-h-65 w-full flex-col rounded-2xl border border-[#EAECE6] bg-white/80 px-5 py-6 shadow-[0_2px_24px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] sm:w-65 sm:px-6 sm:py-7 lg:w-67.5 lg:px-7 lg:py-8"
+              className="group relative flex min-h-65 w-full flex-col rounded-2xl border border-[#EAECE6] bg-white/80 px-5 py-6 shadow-[0_2px_24px_rgba(0,0,0,0.03)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] sm:w-65 sm:px-6 sm:py-7 lg:w-67.5 lg:px-7 lg:py-8 dark:border-neutral-800 dark:bg-neutral-900/80 dark:hover:border-neutral-700"
               aria-label={title}
             >
               <div className="flex items-center justify-between">
                 <div className={`flex size-11 items-center justify-center rounded-2xl shadow-sm ${iconBg}`}>
                   <Icon className="size-5" strokeWidth={2} />
                 </div>
-                <span className="text-2xl font-extrabold leading-none text-[#E8E4DC] transition-colors group-hover:text-[#D4D0C8]">
+                <span className="text-2xl font-extrabold leading-none text-[#E8E4DC] transition-colors group-hover:text-[#D4D0C8] dark:text-neutral-700 dark:group-hover:text-neutral-600">
                   {label}
                 </span>
               </div>
 
-              <h3 className="mt-5 text-xl font-extrabold leading-snug text-[#1A1816] tracking-tight">
+              <h3 className="mt-5 text-xl font-extrabold leading-snug text-[#1A1816] tracking-tight dark:text-neutral-50">
                 {title}
               </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-[#6B655D]">
+              <p className="mt-2.5 text-sm leading-relaxed text-[#6B655D] dark:text-neutral-400">
                 {description}
               </p>
             </Link>
 
             {index < steps.length - 1 && (
-              <span aria-hidden="true" className="hidden shrink-0 text-[#D4D0C8] lg:block">
+              <span aria-hidden="true" className="hidden shrink-0 text-[#D4D0C8] lg:block dark:text-neutral-600">
                 <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h13M12 6l6 6-6 6" />
                 </svg>

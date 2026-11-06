@@ -42,7 +42,7 @@ const initialForm = {
 type TFormState = typeof initialForm;
 
 const inputClasses =
-  "h-10 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30";
+  "h-10 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 dark:text-neutral-200 placeholder:text-gray-400 dark:placeholder:text-neutral-500 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30";
 
 const AddStudioPage = () => {
   const router = useRouter();
@@ -118,20 +118,20 @@ const AddStudioPage = () => {
   };
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-white dark:bg-neutral-900 py-16">
       <div className="mx-auto max-w-6xl px-6">
-        <h2 className="font-serif text-4xl text-gray-900 md:text-[40px]">
+        <h2 className="font-serif text-4xl text-gray-900 dark:text-neutral-50 md:text-[40px]">
           Add New Studio
         </h2>
 
-        <Card className="mx-auto mt-12 gap-8 border-gray-200 py-8 shadow-sm sm:px-4">
+        <Card className="mx-auto mt-12 gap-8 border-gray-200 dark:border-neutral-700 py-8 shadow-sm sm:px-4">
           <form onSubmit={handleSubmit}>
             <CardContent className="flex flex-col gap-6 px-6 sm:px-8">
               {/* Title */}
               <div className="flex flex-col gap-2">
                 <Label
                   htmlFor="title"
-                  className="text-sm font-semibold text-gray-900"
+                  className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                 >
                   Studio Title
                 </Label>
@@ -150,7 +150,7 @@ const AddStudioPage = () => {
               {/* Category + Location */}
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="flex flex-col gap-2">
-                  <Label className="text-sm font-semibold text-gray-900">
+                  <Label className="text-sm font-semibold text-gray-900 dark:text-neutral-50">
                     Category
                   </Label>
                   <Select
@@ -159,7 +159,7 @@ const AddStudioPage = () => {
                   >
                     <SelectTrigger
                       id="category"
-                      className="h-10 w-full rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 data-placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60"
+                      className="h-10 w-full rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 dark:text-neutral-200 data-placeholder:text-gray-400 dark:data-placeholder:text-neutral-500 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:border-neutral-700 dark:bg-input/30"
                       aria-invalid={submitted && !form.category}
                     >
                       <SelectValue placeholder="Select category" />
@@ -176,7 +176,7 @@ const AddStudioPage = () => {
                 <div className="flex flex-col gap-2">
                   <Label
                     htmlFor="location"
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                   >
                     Location
                   </Label>
@@ -198,7 +198,7 @@ const AddStudioPage = () => {
                 <div className="flex flex-col gap-2">
                   <Label
                     htmlFor="price_per_hour"
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                   >
                     Price Per Hour (USD)
                   </Label>
@@ -219,7 +219,7 @@ const AddStudioPage = () => {
                 <div className="flex flex-col gap-2">
                   <Label
                     htmlFor="deposit"
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                   >
                     Deposit (USD)
                   </Label>
@@ -244,7 +244,7 @@ const AddStudioPage = () => {
                 <div className="flex flex-col gap-2">
                   <Label
                     htmlFor="rating"
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                   >
                     Rating (0 - 5)
                   </Label>
@@ -266,7 +266,7 @@ const AddStudioPage = () => {
                 <div className="flex flex-col gap-2">
                   <Label
                     htmlFor="capacity"
-                    className="text-sm font-semibold text-gray-900"
+                    className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                   >
                     Capacity
                   </Label>
@@ -287,7 +287,7 @@ const AddStudioPage = () => {
               <div className="flex flex-col gap-2">
                 <Label
                   htmlFor="image_link"
-                  className="text-sm font-semibold text-gray-900"
+                  className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                 >
                   Image URL
                 </Label>
@@ -308,7 +308,7 @@ const AddStudioPage = () => {
               <div className="flex flex-col gap-2">
                 <Label
                   htmlFor="description"
-                  className="text-sm font-semibold text-gray-900"
+                  className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                 >
                   Description
                 </Label>
@@ -319,7 +319,7 @@ const AddStudioPage = () => {
                   required
                   rows={5}
                   aria-invalid={submitted && !form.description}
-                  className="min-h-32 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30"
+                  className="min-h-32 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 dark:text-neutral-200 placeholder:text-gray-400 dark:placeholder:text-neutral-500 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30"
                   value={form.description}
                   onChange={handleInputChange("description")}
                 />
@@ -335,7 +335,7 @@ const AddStudioPage = () => {
                 type="button"
                 variant="outline"
                 onClick={handleCancel}
-                className="h-10 gap-2 rounded-md border-red-200 px-5 text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600"
+                className="h-10 gap-2 rounded-md border-red-200 px-5 text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600 dark:border-red-900 dark:text-red-400 dark:hover:bg-red-950/50 dark:hover:text-red-300"
               >
                 <Trash2 data-icon="inline-start" />
                 Cancel

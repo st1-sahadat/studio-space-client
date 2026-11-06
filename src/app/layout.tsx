@@ -7,6 +7,7 @@ import Navbar from "@/components/HomePage/Navbar";
 import PageLoader from "@/components/PageLoader";
 import { Bounce, ToastContainer } from "react-toastify";
 import StudioProvider from "./context/studioContext";
+import ThemeProvider from "@/components/theme-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,25 +32,27 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-background text-foreground antialiased">
-        <StudioProvider>
-          <Navbar />
-          {/* Stream the page shell first; data-fetching pages fill in behind this boundary. */}
-          <Suspense fallback={<PageLoader />}>{children}</Suspense>
-          <Footer />
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-            transition={Bounce}
-          />
-        </StudioProvider>
+        <ThemeProvider>
+          <StudioProvider>
+            <Navbar />
+            {/* Stream the page shell first; data-fetching pages fill in behind this boundary. */}
+            <Suspense fallback={<PageLoader />}>{children}</Suspense>
+            <Footer />
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
+          </StudioProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

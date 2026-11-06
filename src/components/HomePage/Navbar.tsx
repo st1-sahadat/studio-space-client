@@ -10,7 +10,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import ThemeToggle from "@/app/theme-toggle";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -74,7 +74,7 @@ function NavbarAuth({ pathname }: { pathname: string }) {
     <Popover>
       <PopoverTrigger
         type="button"
-        className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-2 py-1.5 shadow-sm transition-colors hover:border-amber-300 hover:bg-amber-50"
+        className="flex items-center gap-2 rounded-full border border-gray-200 bg-white px-2 py-1.5 shadow-sm transition-colors hover:border-amber-300 hover:bg-amber-50 dark:border-neutral-700 dark:bg-neutral-900 dark:hover:border-amber-600 dark:hover:bg-amber-950/40"
       >
         <Avatar className="h-9 w-9 ring-2 ring-amber-100">
           <AvatarImage
@@ -83,7 +83,7 @@ function NavbarAuth({ pathname }: { pathname: string }) {
           />
           <AvatarFallback>{user?.name?.charAt(0) ?? "U"}</AvatarFallback>
         </Avatar>
-        <span className="max-w-24 truncate text-sm font-semibold text-gray-800">
+        <span className="max-w-24 truncate text-sm font-semibold text-gray-800 dark:text-neutral-100">
           {user?.name}
         </span>
         <svg
@@ -92,7 +92,7 @@ function NavbarAuth({ pathname }: { pathname: string }) {
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
-          className="h-4 w-4 text-gray-500"
+          className="h-4 w-4 text-gray-500 dark:text-neutral-400"
         >
           <path
             strokeLinecap="round"
@@ -104,28 +104,28 @@ function NavbarAuth({ pathname }: { pathname: string }) {
       <PopoverContent
         align="end"
         sideOffset={8}
-        className="w-72 rounded-3xl border-0 bg-white p-0 shadow-xl shadow-amber-900/5 ring-1 ring-black/5"
+        className="w-72 rounded-3xl border-0 bg-white p-0 shadow-xl shadow-amber-900/5 ring-1 ring-black/5 dark:bg-neutral-900 dark:shadow-black/40 dark:ring-white/10"
       >
-        <div className="rounded-3xl bg-linear-to-b from-white to-gray-50/60 p-5">
+        <div className="rounded-3xl bg-linear-to-b from-white to-gray-50/60 p-5 dark:from-neutral-900 dark:to-neutral-800/60">
           {/* Signed in as */}
           <div className="mb-4">
-            <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400">
+            <p className="text-[11px] font-medium uppercase tracking-wider text-gray-400 dark:text-neutral-500">
               Signed in as
             </p>
-            <p className="text-base font-bold text-gray-900">{user?.name}</p>
-            <p className="text-sm text-gray-500">{user?.email}</p>
+            <p className="text-base font-bold text-gray-900 dark:text-neutral-50">{user?.name}</p>
+            <p className="text-sm text-gray-500 dark:text-neutral-400">{user?.email}</p>
           </div>
 
           {/* Divider */}
-          <div className="mb-3 h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+          <div className="mb-3 h-px bg-linear-to-r from-transparent via-gray-200 to-transparent dark:via-neutral-700" />
 
           {/* Menu items */}
           <div className="flex flex-col gap-1">
             <Link
               href="/add-studio"
-              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600"
+              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600 dark:text-neutral-200 dark:hover:bg-amber-950/40 dark:hover:text-amber-400"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -145,9 +145,9 @@ function NavbarAuth({ pathname }: { pathname: string }) {
 
             <Link
               href="/my-studio-list"
-              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600"
+              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600 dark:text-neutral-200 dark:hover:bg-amber-950/40 dark:hover:text-amber-400"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -167,9 +167,9 @@ function NavbarAuth({ pathname }: { pathname: string }) {
 
             <Link
               href="/my-bookings"
-              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600"
+              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600 dark:text-neutral-200 dark:hover:bg-amber-950/40 dark:hover:text-amber-400"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -189,9 +189,9 @@ function NavbarAuth({ pathname }: { pathname: string }) {
 
             <Link
               href="/saved-wishlist"
-              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600"
+              className="flex items-center gap-3 rounded-xl px-2 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-amber-50 hover:text-amber-600 dark:text-neutral-200 dark:hover:bg-amber-950/40 dark:hover:text-amber-400"
             >
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-amber-100 text-amber-600 dark:bg-amber-950 dark:text-amber-400">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -209,12 +209,12 @@ function NavbarAuth({ pathname }: { pathname: string }) {
             </Link>
           </div>
 
-          <div className="my-2 h-px bg-linear-to-r from-transparent via-gray-200 to-transparent" />
+          <div className="my-2 h-px bg-linear-to-r from-transparent via-gray-200 to-transparent dark:via-neutral-700" />
 
           <Button
             onClick={handleSignOut}
             variant="outline"
-            className="w-full rounded-xl border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 hover:border-red-300 transition-colors"
+            className="w-full rounded-xl border-red-200 bg-red-50 text-red-600 hover:bg-red-100 hover:text-red-700 hover:border-red-300 transition-colors dark:border-red-900 dark:bg-red-950/50 dark:text-red-400 dark:hover:border-red-800 dark:hover:bg-red-950 dark:hover:text-red-300"
           >
             <span className="mr-2">→</span> Sign Out
           </Button>
@@ -325,7 +325,7 @@ export default function Navbar() {
             aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="rounded-md p-2 text-gray-900 transition-colors hover:bg-gray-100 hover:text-cyan-600 sm:hidden"
+            className="rounded-md p-2 text-gray-900 transition-colors hover:bg-gray-100 hover:text-cyan-600 sm:hidden dark:text-neutral-100 dark:hover:bg-neutral-800 dark:hover:text-cyan-400"
           >
             <span className="sr-only">Toggle navigation menu</span>
             {isMenuOpen ? (

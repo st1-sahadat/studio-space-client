@@ -20,9 +20,9 @@ const StudioPage = async () => {
         {data.length > 0 ? (
           <StudioCard Studio={data} />
         ) : (
-          <div className="rounded-3xl border border-[#EAECE6] bg-white py-20 text-center shadow-sm">
-            <p className="text-lg font-medium text-[#6B655D]">No studios found.</p>
-            <p className="mt-2 text-sm text-[#A8A39D]">Try adjusting your filters or search terms.</p>
+          <div className="rounded-3xl border border-[#EAECE6] dark:border-neutral-700 bg-white dark:bg-neutral-900 py-20 text-center shadow-sm">
+            <p className="text-lg font-medium text-[#6B655D] dark:text-neutral-400">No studios found.</p>
+            <p className="mt-2 text-sm text-[#A8A39D] dark:text-neutral-500">Try adjusting your filters or search terms.</p>
           </div>
         )}
       </div>

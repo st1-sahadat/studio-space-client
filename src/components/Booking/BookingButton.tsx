@@ -45,13 +45,13 @@ const BookingCard = ({ studio }: { studio: IStudio }) => {
     };
     return (
         <div>
-            <aside className="h-fit rounded-3xl border border-slate-200 bg-white p-7 shadow-xl shadow-slate-200/60 lg:sticky lg:top-6">
+            <aside className="h-fit rounded-3xl border border-slate-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-7 shadow-xl shadow-slate-200/60 lg:sticky lg:top-6">
                 <p className="text-3xl font-black text-amber-500">
                     ${studio.price_per_hour}
-                    <span className="text-sm font-normal text-slate-400">/ hour</span></p>
-                <div className="mt-5 space-y-4 border-t border-slate-100 pt-5 text-sm"><p className="flex justify-between"><span className="text-slate-500">Security Deposit</span>
+                    <span className="text-sm font-normal text-slate-400 dark:text-neutral-500">/ hour</span></p>
+                <div className="mt-5 space-y-4 border-t border-slate-100 dark:border-neutral-800 pt-5 text-sm"><p className="flex justify-between"><span className="text-slate-500 dark:text-neutral-400">Security Deposit</span>
                     <b>${studio.deposit}</b>
-                </p><p className="flex justify-between"><span className="text-slate-500">Cancellation Policy</span><b className="text-emerald-600">Free before shoot confirmation</b></p><p className="flex justify-between"><span className="text-slate-500">Availability</span><b>Instant Request Slots</b></p></div>
+                </p><p className="flex justify-between"><span className="text-slate-500 dark:text-neutral-400">Cancellation Policy</span><b className="text-emerald-600 dark:text-emerald-400">Free before shoot confirmation</b></p><p className="flex justify-between"><span className="text-slate-500 dark:text-neutral-400">Availability</span><b>Instant Request Slots</b></p></div>
                 <form onSubmit={handleBooking}>
                     <Button
                         type='submit'
@@ -59,7 +59,7 @@ const BookingCard = ({ studio }: { studio: IStudio }) => {
                         ▣ &nbsp; Book Workspace Now
                     </Button>
                 </form>
-                <p className="mt-5 text-center text-xs leading-5 text-slate-400">You won&apos;t be charged immediately. Your reservation will enter pending status for host approval.</p>
+                <p className="mt-5 text-center text-xs leading-5 text-slate-400 dark:text-neutral-500">You won&apos;t be charged immediately. Your reservation will enter pending status for host approval.</p>
             </aside>
         </div>
     );

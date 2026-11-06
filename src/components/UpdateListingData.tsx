@@ -32,7 +32,7 @@ const categories = [
 ];
 
 const inputClasses =
-    "h-10 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30";
+    "h-10 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:border-neutral-700 dark:bg-input/30 dark:text-neutral-200 dark:placeholder:text-neutral-500";
 
 const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
     const router = useRouter();
@@ -98,7 +98,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
         >
             <DialogTrigger render={<Button
                 variant="outline"
-                className="h-9 gap-2 rounded-md border-gray-200 px-4 text-sm text-gray-700 hover:bg-gray-50"
+                className="h-9 gap-2 rounded-md border-gray-200 px-4 text-sm text-gray-700 hover:bg-gray-50 dark:border-neutral-700 dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
                 <PenLine className="size-4" />
                 Edit
@@ -114,7 +114,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                 <div className="flex flex-col gap-2">
                                     <Label
                                         htmlFor="title"
-                                        className="text-sm font-semibold text-gray-900"
+                                        className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                     >
                                         Studio Title
                                     </Label>
@@ -133,7 +133,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                 {/* Category + Location */}
                                 <div className="grid gap-6 md:grid-cols-2">
                                     <div className="flex flex-col gap-2">
-                                        <Label className="text-sm font-semibold text-gray-900">
+                                        <Label className="text-sm font-semibold text-gray-900 dark:text-neutral-50">
                                             Category
                                         </Label>
                                         <Select
@@ -142,7 +142,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                         >
                                             <SelectTrigger
                                                 id="category"
-                                                className="h-10 w-full rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 data-placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60"
+                                                className="h-10 w-full rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 data-placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:border-neutral-700 dark:bg-input/30 dark:text-neutral-200 dark:data-placeholder:text-neutral-500"
                                                 aria-invalid={submitted && !form.category}
                                             >
                                                 <SelectValue placeholder="Select category" />
@@ -159,7 +159,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     <div className="flex flex-col gap-2">
                                         <Label
                                             htmlFor="location"
-                                            className="text-sm font-semibold text-gray-900"
+                                            className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                         >
                                             Location
                                         </Label>
@@ -181,7 +181,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     <div className="flex flex-col gap-2">
                                         <Label
                                             htmlFor="price_per_hour"
-                                            className="text-sm font-semibold text-gray-900"
+                                            className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                         >
                                             Price Per Hour (USD)
                                         </Label>
@@ -202,7 +202,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     <div className="flex flex-col gap-2">
                                         <Label
                                             htmlFor="deposit"
-                                            className="text-sm font-semibold text-gray-900"
+                                            className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                         >
                                             Deposit (USD)
                                         </Label>
@@ -227,7 +227,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     <div className="flex flex-col gap-2">
                                         <Label
                                             htmlFor="rating"
-                                            className="text-sm font-semibold text-gray-900"
+                                            className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                         >
                                             Rating (0 - 5)
                                         </Label>
@@ -249,7 +249,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     <div className="flex flex-col gap-2">
                                         <Label
                                             htmlFor="capacity"
-                                            className="text-sm font-semibold text-gray-900"
+                                            className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                         >
                                             Capacity
                                         </Label>
@@ -270,7 +270,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                 <div className="flex flex-col gap-2">
                                     <Label
                                         htmlFor="image_link"
-                                        className="text-sm font-semibold text-gray-900"
+                                        className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                     >
                                         Image URL
                                     </Label>
@@ -291,7 +291,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                 <div className="flex flex-col gap-2">
                                     <Label
                                         htmlFor="description"
-                                        className="text-sm font-semibold text-gray-900"
+                                        className="text-sm font-semibold text-gray-900 dark:text-neutral-50"
                                     >
                                         Description
                                     </Label>
@@ -302,7 +302,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                         required
                                         rows={5}
                                         aria-invalid={submitted && !form.description}
-                                        className="min-h-32 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:bg-input/30"
+                                        className="min-h-32 rounded-md border-cyan-100 bg-cyan-50/70 text-sm text-gray-700 placeholder:text-gray-400 focus-visible:border-cyan-300 focus-visible:ring-cyan-200/60 dark:border-neutral-700 dark:bg-input/30 dark:text-neutral-200 dark:placeholder:text-neutral-500"
                                         value={form.description}
                                         onChange={handleInputChange("description")}
                                     />
@@ -318,7 +318,7 @@ const UpdateListingData = ({ updateListing }: { updateListing: TBooking }) => {
                                     type="button"
                                     variant="outline"
                                     onClick={handleCancel}
-                                    className="h-10 gap-2 rounded-md border-red-200 px-5 text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600"
+                                    className="h-10 gap-2 rounded-md border-red-200 px-5 text-sm font-medium text-red-500 hover:bg-red-50 hover:text-red-600 dark:border-red-900 dark:text-red-400 dark:hover:bg-red-950/50 dark:hover:text-red-300"
                                 >
                                     <Trash2 data-icon="inline-start" />
                                     Cancel
