@@ -1,5 +1,5 @@
 "use client"
-import { IStudio } from '../Type/type';
+import { IStudio, TBooking } from '../Type/type';
 import { authClient } from '@/lib/auth-client';
 import { Button } from '../ui/button';
 import { redirect } from 'next/navigation';
@@ -16,32 +16,42 @@ const BookingCard = ({ studio }: { studio: IStudio }) => {
         if (!user) {
             redirect('/sign-in');
         }
-        const data = {
-            userName: user.name,
-            email: user.email,
-            image: user.image,
-            ...studio,
-            bookingDate: new Date(),
-        };
-        try {
-            const token = await getTokenFromClient();
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking`, {
-                method: 'POST',
 
-                headers: {
-                    'Content-Type': 'application/json',
-                    authorization: `Bearer ${token}`
-                },
-                body: JSON.stringify(data),
-            });
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/my-bookings/${user?.email}`);
+        const bookingAvailableData = await res.json();
+        const isAlreadyBooked = bookingAvailableData.find((booking: TBooking) => booking.title === studio.title);
+        if (isAlreadyBooked) {
+            toast.error('You have already booked this studio.');
+            return;
+        } else {
+            const data = {
+                userName: user.name,
+                email: user.email,
+                image: user.image,
+                ...studio,
+                bookingDate: new Date(),
+            };
+            try {
+                const token = await getTokenFromClient();
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/booking`, {
+                    method: 'POST',
 
-            if (!res.ok) throw new Error('Booking failed');
+                    headers: {
+                        'Content-Type': 'application/json',
+                        authorization: `Bearer ${token}`
+                    },
+                    body: JSON.stringify(data),
+                });
 
-            await res.json();
-            toast.success('Booking request submitted successfully!');
-        } catch {
-            toast.error('Failed to submit booking request. Please try again.');
+                if (!res.ok) throw new Error('Booking failed');
+
+                await res.json();
+                toast.success('Booking request submitted successfully!');
+            } catch {
+                toast.error('Failed to submit booking request. Please try again.');
+            }
         }
+
     };
     return (
         <div>
